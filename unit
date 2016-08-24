@@ -1,0 +1,15 @@
+
+class unit:
+
+    value = None
+    node = None
+
+    def __init__(self,value,node):
+        self.value = value
+        self.node = node
+    
+    def __str__(self):
+        if self.node == None:
+            return str(self.value) + " -> " + "Null"
+        else:
+            return str(self.value) + " -> " + str(self.node.value)
