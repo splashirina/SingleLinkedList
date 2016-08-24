@@ -1,0 +1,110 @@
+import unit from unit
+
+class SingleLinkedList():   
+    head = None
+    
+    def __init__(self):
+        self.head = unit(None,None)
+    
+    def pushFront(self,value):
+        if self.isEmpty():
+            self.head = unit(value,None)
+        else:
+            temp = unit(self.head.value,self.head.node)
+            self.head = unit(value,temp)
+    
+    def topFront(self):
+        return self.head.value
+    
+    def popFront(self):
+        if self.isEmpty():
+            pass
+        elif self.head.node == None:
+            self.head.value = None
+        else:
+
+            self.head = self.head.node
+
+    
+    def pushBack(self,value):
+        if self.isEmpty():
+           self.head.value = value
+        else:
+            nextNode = self.head
+            while nextNode.node != None:
+                nextNode = nextNode.node
+            nextNode.node = unit(value,None)
+    
+    def popBack(self):
+        if self.isEmpty():
+            pass
+        elif self.head.node == None:
+            self.head.value = None
+        else:
+            nextNode = self.head
+            while nextNode.node.node != None:
+                nextNode = nextNode.node.node
+            nextNode.node = None
+    
+    
+    
+    def erase(self,nodeVal,val):
+        #remove the node of first occurance of value nodeVal
+        if self.isEmpty():
+            pass
+        elif self.head.value == nodeVal:
+                self.head.value == None
+        else:
+            preNode = self.head
+            Node = self.head.node
+            while(Node.node!=None):
+                if(Node.value == nodeVal):
+                    preNode.node = Node.node
+                    break
+                preNode = preNode.node
+                Node = Node.node
+
+                      
+    #def addBefore(self,nodeVal,value):
+        
+            
+    def addAfter(self,nodeVal,value):
+        nextNode = self.head
+        while(True):
+            if(nextNode.value == node.value and nextNode.node == node.node):
+                nextNode.node = unit(value,nextNode.node.node)
+                break
+            if(nextNode.node == None):
+                break
+            nextNode = nextNode.node
+        
+    def find(self,value):
+        nextNode = self.head
+        while(True): 
+            if(nextNode.value == value):
+                return True
+            if(nextNode.node == None):
+                break
+            nextNode = nextNode.node
+        return False
+            
+    def isEmpty(self):
+        if self.head.value == None and self.head.node == None:
+            return True
+        else:
+            return False
+    
+    def head(self):
+        return self.head
+            
+    def __str__(self):
+        string = ""
+        nextNode = self.head
+        while nextNode.value != None: 
+            string = string +str(nextNode.value)+ ' -> '
+            if nextNode.node == None:
+                break
+            else: 
+                nextNode = nextNode.node
+        string = string + 'Null'
+        return string
